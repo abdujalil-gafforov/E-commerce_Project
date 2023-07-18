@@ -2,6 +2,14 @@ body{
 	background-color: hsl(0, 0%, 98%);
 }
 
+.product-page-container .product-info-card {
+    align-items: stretch;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    margin-top: 20px;
+}
+
 h1,h2,h3,h4,h5,h6{
 	color:hsl(0, 0%, 30%);
 }

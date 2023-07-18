@@ -1,6 +1,6 @@
 from datetime import datetime
 from django.views import View
-from django.views.generic import TemplateView, UpdateView
+from django.views.generic import TemplateView, UpdateView, CreateView
 from django.http import JsonResponse
 from .models import *
 from .utils import cartData, guestOrder
@@ -17,6 +17,21 @@ class Store(TemplateView):
         return context
 
     template_name = 'store/store.html'
+
+class Register(TemplateView):
+    template_name = 'store/register.html'
+
+
+class ProductPage(TemplateView):
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['product'] = Product.objects.get(id=context['pk'])
+        data = cartData(self.request)
+        context['cartItems'] = data['cartItems']
+        return context
+
+    template_name = 'store/product.html'
 
 
 class Cart(TemplateView):
